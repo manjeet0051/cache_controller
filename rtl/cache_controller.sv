@@ -6,7 +6,7 @@ module cache_controller #(
     input  logic                     clk,
     input  logic                     rst_n,
 
-    //================ CPU Interface ================
+    // CPU Interface
     input  logic                     cpu_read,
     input  logic                     cpu_write,
     input  logic [ADDR_WIDTH-1:0]    cpu_addr,
@@ -15,7 +15,7 @@ module cache_controller #(
     output logic [DATA_WIDTH-1:0]    cpu_rdata,
     output logic                     cpu_ready,
 
-    //============== Memory Interface ==============
+    //Memory Interface
     output logic                     mem_read,
     output logic                     mem_write,
     output logic [ADDR_WIDTH-1:0]    mem_addr,
