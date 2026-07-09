@@ -40,11 +40,11 @@ cacheController/
 
 ## Development Roadmap
 
-| Phase   | Module                     | Status |
-| ------- | -------------------------- | ------ |
-| Phase 1 | Top-Level Cache Controller | ✅      |
-| Phase 2 | Address Decoder            | ✅      |
-| Phase 3 | Tag RAM                    | ⏳      |
+| Phase   | Module                     | Status  |
+| ------- | -------------------------- | ------  |
+| Phase 1 | Top-Level Cache Controller | ✓       |
+| Phase 2 | Address Decoder            | ✓       |
+| Phase 3 | Tag RAM                    | ✓       |
 | Phase 4 | Data RAM                   | ⏳      |
 | Phase 5 | Tag Comparator             | ⏳      |
 | Phase 6 | Cache FSM                  | ⏳      |
@@ -73,6 +73,7 @@ Example:
 docs/
 ├── Phase-1.md
 ├── Phase-2.md
+├── Phase-3.md
 ├── ...
 ```
 
