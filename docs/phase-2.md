@@ -1,4 +1,4 @@
-# Phase 2: Address Decoder
+## Address Decoder
 
 ## Objective
 

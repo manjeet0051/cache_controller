@@ -45,7 +45,7 @@ cacheController/
 | Phase 1 | Top-Level Cache Controller | ✓       |
 | Phase 2 | Address Decoder            | ✓       |
 | Phase 3 | Tag RAM                    | ✓       |
-| Phase 4 | Data RAM                   | ⏳      |
+| Phase 4 | Data RAM                   | ✓       |
 | Phase 5 | Tag Comparator             | ⏳      |
 | Phase 6 | Cache FSM                  | ⏳      |
 | Phase 7 | Memory Interface           | ⏳      |

@@ -1,4 +1,4 @@
-# Phase 3: Tag RAM
+## Tag RAM
 
 ## Objective
 

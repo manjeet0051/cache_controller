@@ -1,4 +1,4 @@
-## Phase 1: Project Skeleton
+## Project Skeleton
 
 ### Objective
 
