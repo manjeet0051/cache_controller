@@ -38,6 +38,14 @@ Establish the top-level cache controller architecture and verify the design comp
 
 ### Simulation
 
+Compile
+
+```bash
+iverilog -g2012 -o cache.out rtl/cache_controller.sv tb/tb_cache_controller.sv
+vvp cache.out
+```
+
+Alternate (Already Compiled)
 ```bash
 cd result
 vvp cache_controller

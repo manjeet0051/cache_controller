@@ -17,7 +17,6 @@ Implement the **Tag RAM** module to store cache metadata for each cache line. Th
 * Implemented reset logic to initialize all cache entries.
 * Developed a standalone SystemVerilog testbench.
 * Verified write and read operations for multiple cache indices.
-* Generated simulation waveform (`tag_ram.vcd`).
 
 ## Architecture
 
@@ -74,8 +73,12 @@ Each cache line stores the following information:
 
 ## Simulation
 
-Run
+```bash
+iverilog -g2012 -o tag_ram.out rtl/tag_ram.sv tb/tb_tag_ram.sv
+vvp tag_ram.out
+```
 
+Alternate (Already Compiled)
 ```bash
 cd result
 vvp tag_ram

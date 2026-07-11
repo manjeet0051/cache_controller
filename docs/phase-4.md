@@ -13,7 +13,6 @@ Implement the **Data RAM** module to store the actual cache data for each cache 
 * Added asynchronous read operation.
 * Developed a standalone SystemVerilog testbench.
 * Verified read and write operations across different cache lines and word offsets.
-* Generated simulation waveform (`data_ram.vcd`).
 
 ## Architecture
 
@@ -80,8 +79,12 @@ Data RAM
 
 ## Simulation
 
-Run
+```bash
+iverilog -g2012 -o data_ram.out rtl/data_ram.sv tb/tb_data_ram.sv
+vvp data_ram.out
+```
 
+Alternate (Already Compiled)
 ```bash
 cd result
 vvp data_ram

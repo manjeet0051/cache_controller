@@ -15,7 +15,6 @@ Implement the Address Decoder module to split the CPU address into **Tag**, **In
   * Block Offset
 * Developed a standalone testbench.
 * Verified functionality using multiple test addresses.
-* Generated waveform (`address_decoder.vcd`) for simulation analysis.
 
 ## Address Format
 
@@ -44,8 +43,12 @@ For a **32-bit CPU address**:
 
 ## Simulation
 
-Run
+```bash
+iverilog -g2012 -o address_decoder.out rtl/address_decoder.sv tb/tb_address_decoder.sv
+vvp address_decoder.out
+```
 
+Alternate (Already Compiled)
 ```bash
 cd result
 vvp address_decoder
