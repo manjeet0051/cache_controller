@@ -48,7 +48,7 @@ cacheController/
 | Phase 4 | Data RAM                   | ✓       |
 | Phase 5 | Tag Comparator             | ✓       |
 | Phase 6 | Cache FSM                  | ✓       |
-| Phase 7 | Memory Interface           | ⏳      |
+| Phase 7 | Memory Interface           | ✓       |
 | Phase 8 | Top-Level Integration      | ⏳      |
 | Phase 9 | Complete Verification      | ⏳      |
 
@@ -76,6 +76,8 @@ docs/
 ├── Phase-3.md
 ├── Phase-4.md
 ├── Phase-5.md
+├── Phase-6.md
+├── Phase-7.md
 ├── ...
 ```
 

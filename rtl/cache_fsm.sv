@@ -27,10 +27,8 @@ module cache_fsm(
 
     state_t state,next_state;
 
-    //-----------------------------------------
+    
     // State Register
-    //-----------------------------------------
-
     always_ff @(posedge clk or negedge rst_n) begin
 
         if(!rst_n)
@@ -40,10 +38,8 @@ module cache_fsm(
 
     end
 
-    //-----------------------------------------
+    
     // Next State Logic
-    //-----------------------------------------
-
     always_comb begin
 
         next_state = state;
@@ -80,10 +76,8 @@ module cache_fsm(
 
     end
 
-    //-----------------------------------------
+    
     // Output Logic
-    //-----------------------------------------
-
     always_comb begin
 
         cache_read  = 0;

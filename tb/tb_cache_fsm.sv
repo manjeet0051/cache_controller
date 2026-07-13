@@ -14,7 +14,6 @@ module tb_cache_fsm;
     logic update_cache;
     logic cpu_ready;
 
-    //-------------------------------------
 
     cache_fsm dut(
 
@@ -32,11 +31,11 @@ module tb_cache_fsm;
 
     );
 
-    //-------------------------------------
+    
 
     always #5 clk = ~clk;
 
-    //-------------------------------------
+    
 
     task print_status;
 
@@ -54,7 +53,7 @@ module tb_cache_fsm;
 
     endtask
 
-    //-------------------------------------
+    
 
     initial begin
 
@@ -68,17 +67,13 @@ module tb_cache_fsm;
         cache_hit = 0;
         mem_ready = 0;
 
-        //---------------------------------
+        
         // Reset
-        //---------------------------------
-
         #20;
         rst_n = 1;
 
-        //---------------------------------
+        
         // Case 1 : Cache Hit
-        //---------------------------------
-
         @(posedge clk);
 
         cpu_req = 1;
@@ -96,10 +91,8 @@ module tb_cache_fsm;
         @(posedge clk);
         print_status();
 
-        //---------------------------------
+        
         // Case 2 : Cache Miss
-        //---------------------------------
-
         @(posedge clk);
 
         cpu_req = 1;
