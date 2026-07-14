@@ -24,33 +24,6 @@ A parameterized **Direct-Mapped Cache Controller** implemented in **SystemVerilo
 * SystemVerilog verification environment
 * GTKWave simulation support
 
-## Project Structure
-
-```text
-cacheController/
-│
-├── rtl/                # RTL modules
-├── tb/                 # Testbenches
-├── docs/               # Phase-wise documentation
-├── waveforms/          # Generated waveform files (optional)
-├── README.md
-│
-└── ...
-```
-
-## Development Roadmap
-
-| Phase   | Module                     | Status  |
-| ------- | -------------------------- | ------  |
-| Phase 1 | Top-Level Cache Controller | ✓       |
-| Phase 2 | Address Decoder            | ✓       |
-| Phase 3 | Tag RAM                    | ✓       |
-| Phase 4 | Data RAM                   | ✓       |
-| Phase 5 | Tag Comparator             | ✓       |
-| Phase 6 | Cache FSM                  | ✓       |
-| Phase 7 | Memory Interface           | ✓       |
-| Phase 8 | Top-Level Integration      | ⏳      |
-| Phase 9 | Complete Verification      | ⏳      |
 
 ## Documentation
 
@@ -90,17 +63,6 @@ docs/
 * GTKWave
 * Git & GitHub
 
-## Future Enhancements
-
-* 2-Way Set Associative Cache
-* LRU Replacement Policy
-* Write-Back and Write-Allocate support
-* Configurable Cache Size and Block Size
-* Performance Counters (Hit/Miss Statistics)
-* Self-Checking Verification Environment
-* Randomized Testbench
-* FPGA Implementation
-* Synthesis using Open-Source EDA Tools
 
 ## License
 
