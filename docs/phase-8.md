@@ -1,187 +1,54 @@
-## Cache FSM v2
+## Cache Controller Top Module
 
 ## Overview
 
-The **Cache FSM v2** is the control unit of the cache controller. It coordinates cache access, memory transactions, and CPU responses using a Finite State Machine (FSM). Compared to the previous version, this implementation supports both **read** and **write** operations along with **cache hit**, **cache miss**, **dirty line handling**, and **cache line allocation**.
+`cache_controller_top` is the top-level integration module of the 32-bit L1 Direct-Mapped Cache Controller.
 
-This module acts as the central controller that connects the CPU, cache memories, and memory interface.
+This module connects all cache sub-blocks including address decoder, tag RAM, data RAM, tag comparator, cache FSM, memory interface, and main memory to provide complete cache operation.
 
----
-
-## Features
-
-- Supports CPU Read Requests
-- Supports CPU Write Requests
-- Detects Cache Hits and Cache Misses
-- Handles Dirty Cache Lines
-- Performs Write-Back before replacement
-- Allocates new cache lines after a miss
-- Updates cache after memory fetch
-- Generates CPU Ready signal after transaction completion
-- Provides `state_dbg` output for debugging and waveform analysis
+The module acts as an interface between the CPU and cache subsystem, handling CPU read requests, cache hit/miss detection, and data transfer from main memory during cache misses.
 
 ---
 
-## FSM States
+## Responsibilities
 
-| State | Description |
-|--------|-------------|
-| IDLE | Waits for a CPU request |
-| COMPARE_TAG | Checks whether the requested tag is present in cache |
-| READ_HIT | Read data directly from cache |
-| WRITE_HIT | Update cache data on a write hit |
-| CHECK_DIRTY | Determines whether the current cache line must be written back |
-| WRITE_BACK | Writes dirty cache line to main memory |
-| ALLOCATE | Requests a new cache line from main memory |
-| UPDATE_CACHE | Updates Tag RAM and Data RAM with new cache line |
-| COMPLETE | Signals transaction completion to CPU |
+The top module performs the following functions:
 
----
-
-## Supported Cache Operations
-
-### Read Hit
-
-```text
-IDLE
- ↓
-COMPARE_TAG
- ↓
-READ_HIT
- ↓
-COMPLETE
-```
-
----
-
-### Write Hit
-
-```text
-IDLE
- ↓
-COMPARE_TAG
- ↓
-WRITE_HIT
- ↓
-COMPLETE
-```
-
----
-
-### Read Miss (Clean Line)
-
-```text
-IDLE
- ↓
-COMPARE_TAG
- ↓
-CHECK_DIRTY
- ↓
-ALLOCATE
- ↓
-UPDATE_CACHE
- ↓
-COMPLETE
-```
-
----
-
-### Write Miss (Dirty Line)
-
-```text
-IDLE
- ↓
-COMPARE_TAG
- ↓
-CHECK_DIRTY
- ↓
-WRITE_BACK
- ↓
-ALLOCATE
- ↓
-UPDATE_CACHE
- ↓
-COMPLETE
-```
-
----
-
-## Inputs
-
-| Signal | Description |
-|---------|-------------|
-| clk | System clock |
-| rst_n | Active-low reset |
-| cpu_req | CPU request valid |
-| cpu_read | Read request from CPU |
-| cpu_write | Write request from CPU |
-| cache_hit | Cache hit indicator |
-| dirty | Dirty bit from Tag RAM |
-| mem_ready | Main memory transaction complete |
-
----
-
-## Outputs
-
-| Signal | Description |
-|---------|-------------|
-| cache_read | Enables cache read operation |
-| cache_write | Enables cache write operation |
-| mem_read | Initiates memory read |
-| mem_write | Initiates memory write-back |
-| update_cache | Updates cache after memory fetch |
-| cpu_ready | Indicates completion of CPU request |
-| state_dbg | Current FSM state for debugging |
-
----
-
-## Verification
-
-A dedicated SystemVerilog testbench verifies all major cache operations.
-
-### Test Cases
-
-- Reset Verification
-- Read Hit
-- Write Hit
-- Read Miss (Clean Cache Line)
-- Write Miss (Dirty Cache Line)
-- Memory Read Handshake
-- Memory Write-Back Handshake
-- Cache Update
-- CPU Ready Generation
+- Integrates all cache components into a single RTL design.
+- Provides CPU interface for read requests and data response.
+- Generates cache hit/miss information using tag comparison.
+- Controls cache access through FSM generated control signals.
+- Manages communication between cache and main memory.
+- Updates cache data after memory refill.
 
 ---
 
 ## Simulation
 
-Compile
+### Compile RTL and Testbench
 
 ```bash
-iverilog -g2012 -o fsm_v2.out rtl/cache_fsm_v2.sv tb/tb_cache_fsm_v2.sv
-vvp fsm_v2.out
+iverilog -g2012 -o cache.out \
+rtl/address_decoder.sv \
+rtl/tag_ram.sv \
+rtl/data_ram.sv \
+rtl/tag_comparator.sv \
+rtl/cache_fsm.sv \
+rtl/memory_interface.sv \
+rtl/main_memory.sv \
+rtl/cache_controller_top.sv \
+tb/tb_cache_controller_top.sv
 ```
 
-Waveform
-
+Run Simulation 
 ```bash
-gtkwave cache_fsm_v2.vcd
+vvp cache.out
 ```
-
-Alternate (Already Compiled)
-```bash
-cd result
-vvp cache_fsm_v2
-```
----
-
----
 
 ## Waveform
 
-The following waveform verifies the memory request generation, handshake with the external memory, and data transfer back to the cache.
-
-
-![Memory Interface Waveform](../waveforms/cache_fsm_v2.png)
-
----
+```bash
+gktwave cache_controller_top.vcd
+```
+![Cache Controller Waveform](../waveforms/cache_top1.png)
+![Cache Controller Waveform](../waveforms/cache_top2.png)
